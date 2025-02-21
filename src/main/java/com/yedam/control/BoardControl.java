@@ -15,9 +15,10 @@ public class BoardControl implements Control {
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// board.do?bno=12
 		String bno = req.getParameter("bno");
+		
 		BoardDAO bdao = new BoardDAO();
-		bdao.updateCount(Integer.parseInt(bno));
 		BoardVO board = bdao.getBoard(Integer.parseInt(bno)); // 문자열 "14" -> int 14
+		bdao.updateCount(Integer.parseInt(bno));
 		
 		// 요청정보의 attribute활용.
 		req.setAttribute("board", board); //
